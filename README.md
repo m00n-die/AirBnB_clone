@@ -4,8 +4,9 @@ website. The whole project lasts for about four months with each mont being dedi
 
 # THE CONSOLE
 * This is built in month one of the project.
-A command line interface tool built to manipulate data. It supports operations such as:
-*Creation of a new object
+
+\A command line interface tool built to manipulate data. It supports operations such as:
+Creation of a new object
 Retrieving an object from a file or database
 Pertforming operations on objects(count, compute stats, etc…)
 Updating attributes of objects
