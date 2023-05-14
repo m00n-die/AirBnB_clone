@@ -7,25 +7,26 @@ import json
 from models import storage
 import re
 
+
 class HBNBCommand(cmd.Cmd):
-	"""Class for the command interpreter."""
+    """Class for the command interpreter."""
 
     prompt = "(hbnb) "
-	
-	def do_EOF(self, line):
+
+    def do_EOF(self, line):
         """Exits the program"""
         print()
         return True
-	
-	def do_quit(self, line):
+
+    def do_quit(self, line):
         """Exits the program"""
         return True
-	
-	def emptyline(self):
+
+    def emptyline(self):
         """Does not do anything"""
         pass
-	
-	def do_create(self, line):
+
+    def do_create(self, line):
         """creates a new instance"""
         if line == "" or line is None:
             print("** class name missing **")
@@ -35,10 +36,10 @@ class HBNBCommand(cmd.Cmd):
             var = storage.classes()[line]()
             var.save()
             print(var.id)
-			
-	def do_destroy(self, line):
+
+    def do_destroy(self, line):
         """deletes an instance based on class name and id
-   		"""
+        """
         if line == "" or line is None:
             print("** class name missing **")
         else:
@@ -54,10 +55,10 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     del storage.all()[key]
                     storage.save()
-					
-	 def do_all(self, line):
+
+    def do_all(self, line):
         """Prints all string representation of all instances
-		based on class name
+        based on class name
         """
         if line != "":
             chars = line.split(' ')
@@ -65,20 +66,20 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 vari = [str(obj) for key, obj in storage.all().items()
-                      if type(obj).__name__ == chars[0]]
+                        if type(obj).__name__ == chars[0]]
                 print(vari)
         else:
             list_a = [str(obj) for key, obj in storage.all().items()]
             print(list_a)
-			
-	def do_update(self, line):
+
+    def do_update(self, line):
         """Updates an instance
         """
         if line == "" or line is None:
             print("** class name missing **")
             return
-		
-		regex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
+
+        regex = r'^(\S+)(?:\s(\S+)(?:\s(\S+)(?:\s((?:"[^"]*")|(?:(\S)+)))?)?)?'
         match = re.search(regex, line)
         class_name = match.group(1)
         uid = match.group(2)
