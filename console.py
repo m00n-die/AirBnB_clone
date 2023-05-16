@@ -132,6 +132,23 @@ class HBNBCommand(cmd.Cmd):
                     chars[0] + '.')]
             print(len(var))
 
+    def do_show(self, line):
+        """retrieves an instance based on it id"""
+        if line == "" or line is None:
+            print("** class name missing **")
+        else:
+            chars = line.split(' ')
+            if chars[0] not in storage.classes():
+                print("** class doesn't exist **")
+            elif len(chars) < 2:
+                print("** instance id missing **")
+            else:
+                var = "{}.{}".format(chars[0], chars[1])
+                if var not in storage.all():
+                    print("** no instance found **")
+                else:
+                    print(storage.all[var])
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
